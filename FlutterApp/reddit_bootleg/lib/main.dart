@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -58,7 +57,6 @@ List<PostSchema> postData = [
 ];
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -120,7 +118,6 @@ class SubnavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color greySecondary = Color(0xffCCCCCA);
     return Container(
         margin: EdgeInsets.symmetric(vertical: 4.0),
         padding: EdgeInsets.all(10.0),
@@ -131,16 +128,16 @@ class SubnavBar extends StatelessWidget {
             Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  Icon(Icons.trending_up, color: greySecondary),
+                  Icon(Icons.trending_up, color: Colors.grey.shade400),
                   Text(
                     "Best",
-                    style: TextStyle(color: greySecondary),
+                    style: TextStyle(color: Colors.grey.shade400),
                   ),
-                  Icon(Icons.expand_more, color: greySecondary)
+                  Icon(Icons.expand_more, color: Colors.grey.shade400)
                 ]),
             Row(children: <Widget>[
-              Icon(Icons.view_compact, color: greySecondary),
-              Icon(Icons.expand_more, color: greySecondary)
+              Icon(Icons.view_compact, color: Colors.grey.shade400),
+              Icon(Icons.expand_more, color: Colors.grey.shade400)
             ])
           ],
         ));
@@ -265,7 +262,8 @@ class _PostItemState extends State<PostItem> {
                   isDownvoted = 0;
                 });
               },
-              icon: Icon(Icons.thumb_up_outlined),
+              icon: Icon(
+                  isUpvoted == 1 ? Icons.thumb_up : Icons.thumb_up_outlined),
               color: isUpvoted == 1 ? Colors.deepOrange : Colors.grey.shade500),
           SizedBox(width: 6.0),
           Text("${widget.data.voteCount}",
@@ -281,7 +279,9 @@ class _PostItemState extends State<PostItem> {
                   isUpvoted = 0;
                 });
               },
-              icon: Icon(Icons.thumb_down_outlined),
+              icon: Icon(isDownvoted == 1
+                  ? Icons.thumb_down
+                  : Icons.thumb_down_outlined),
               color:
                   isDownvoted == 1 ? Colors.deepOrange : Colors.grey.shade500),
         ],

@@ -1,16 +1,20 @@
-# reddit_bootleg
 
-A new Flutter project.
+# Tugas 2 - Reddit Bootleg
 
-## Getting Started
+Pada tugas ke-2 ini saya mengambil referensi dari laman utama website Reddit versi tampilan mobile.
 
-This project is a starting point for a Flutter application.
+## Sekilas Tentang Reddit
+Dikutip dari Wikipedia, Reddit adalah situs web hiburan dan juga berita tempat pengunjung yang telah terdaftar dapat berkontribusi dalam bentuk memberikan posting pranala atau teks. Pengunjung lain dapat memberikan suara "atas" atau "bawah", yang kemudian akan dihitung untuk memberikan peringkat posting tersebut, yang menentukan posisinya dalam halaman situs web. Isi situs dibagi berdasarkan tema, yang dinamakan "subreddit".
 
-A few resources to get you started if this is your first Flutter project:
+## Screenshot
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+![App Screenshot](./screenshots/sspage1.png)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Widget Terimplementasi
+
+✅ AppBar ✅ Text ✅ Column ✅ Row
+
+✅ Container ✅ Image ✅ FloatingActionButton
+
+✅ IconButton ✅ TextButton ✅ ListView ✅ Expanded
