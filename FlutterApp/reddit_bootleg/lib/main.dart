@@ -4,6 +4,42 @@ void main() {
   runApp(MyApp());
 }
 
+class PostSchema {
+  int id;
+  String title;
+  String time;
+  String subreddit;
+  int voteCount;
+  int commentCount;
+
+  PostSchema({
+    Key? key,
+    required this.id,
+    required this.title,
+    required this.time,
+    required this.subreddit,
+    required this.voteCount,
+    required this.commentCount,
+  });
+}
+
+List<PostSchema> postData = [
+  PostSchema(
+      id: 0,
+      title: "Lorem Ipsum",
+      time: "3h",
+      subreddit: "r/LoremIpsum",
+      voteCount: 17,
+      commentCount: 7),
+  PostSchema(
+      id: 1,
+      title: "Dolor sit amet",
+      time: "4h",
+      subreddit: "r/LoremIpsum",
+      voteCount: 72,
+      commentCount: 81),
+];
+
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -95,13 +131,14 @@ class PostList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: <Widget>[PostItem()],
-    );
+        children: List.generate(
+            postData.length, (index) => PostItem(data: postData[index])));
   }
 }
 
-class PostItem extends StatelessWidget {
-  const PostItem({Key? key}) : super(key: key);
+class PostItem extends StatefulWidget {
+  const PostItem({Key? key, required this.data}) : super(key: key);
+  final PostSchema data;
 
   static const TextStyle _headlinePostBold =
       TextStyle(fontWeight: FontWeight.bold);
@@ -112,6 +149,14 @@ class PostItem extends StatelessWidget {
 
   static const TextStyle _contentPostTitle =
       TextStyle(fontWeight: FontWeight.bold, fontSize: 18);
+
+  @override
+  _PostItemState createState() => _PostItemState();
+}
+
+class _PostItemState extends State<PostItem> {
+  int isUpvoted = 0;
+  int isDownvoted = 0;
 
   Widget _headPost() {
     return Row(
@@ -131,14 +176,15 @@ class PostItem extends StatelessWidget {
                   SizedBox(width: 10.0),
                   TextButton(
                     onPressed: () => print("judul diklik!"),
-                    child: Text("r/LoremIpsum"),
+                    child: Text("${widget.data.subreddit}"),
                     style: TextButton.styleFrom(
                         primary: Colors.black,
                         backgroundColor: Colors.white,
-                        textStyle: _headlinePostBold),
+                        textStyle: PostItem._headlinePostBold),
                   ),
-                  Text(" · ", style: _headlinePostSecondary),
-                  Text("6h", style: _headlinePostSecondary)
+                  Text(" · ", style: PostItem._headlinePostSecondary),
+                  Text("${widget.data.time}",
+                      style: PostItem._headlinePostSecondary)
                 ]),
           ),
           Icon(Icons.more_horiz, color: Colors.grey)
@@ -155,12 +201,12 @@ class PostItem extends StatelessWidget {
           Expanded(
             child: TextButton(
               onPressed: () => print("judul diklik!"),
-              child: Text("Lorem Ipsum"),
+              child: Text("${widget.data.title}"),
               style: TextButton.styleFrom(
                 primary: Colors.black,
                 backgroundColor: Colors.white,
                 alignment: Alignment.centerLeft,
-                textStyle: _contentPostTitle,
+                textStyle: PostItem._contentPostTitle,
               ),
             ),
           ),
@@ -186,11 +232,32 @@ class PostItem extends StatelessWidget {
       decoration: __boxDecoration,
       child: Row(
         children: [
-          Icon(Icons.thumb_up_outlined, color: Colors.grey.shade500),
+          IconButton(
+              onPressed: () {
+                setState(() {
+                  if (isUpvoted == 1) return;
+                  postData[widget.data.id].voteCount += (1 + isDownvoted);
+                  isUpvoted = 1;
+                  isDownvoted = 0;
+                });
+              },
+              icon: Icon(Icons.thumb_up_outlined),
+              color: isUpvoted == 1 ? Colors.deepOrange : Colors.grey.shade500),
           SizedBox(width: 6.0),
-          Text("17", style: _headlinePostSecondary),
+          Text("${widget.data.voteCount}",
+              style: PostItem._headlinePostSecondary),
           SizedBox(width: 6.0),
-          Icon(Icons.thumb_down_outlined, color: Colors.grey.shade500),
+          IconButton(
+              onPressed: () {
+                setState(() {
+                  if (isDownvoted == 1) return;
+                  postData[widget.data.id].voteCount -= (1 + isUpvoted);
+                  isDownvoted = 1;
+                  isUpvoted = 0;
+                });
+              },
+              icon: Icon(Icons.thumb_down_outlined),
+              color: isDownvoted == 1 ? Colors.deepOrange : Colors.grey.shade500),
         ],
       ),
     );
@@ -204,13 +271,12 @@ class PostItem extends StatelessWidget {
     Widget __comment = Container(
       padding: __padding,
       decoration: __boxDecoration,
-      child: Row(
-        children: <Widget>[
-          Icon(Icons.add_comment_outlined, color: Colors.grey.shade500),
-          SizedBox(width: 6.0),
-          Text("17", style: _headlinePostSecondary)
-        ]
-      ),
+      child: Row(children: <Widget>[
+        Icon(Icons.add_comment_outlined, color: Colors.grey.shade500),
+        SizedBox(width: 6.0),
+        Text("${widget.data.commentCount}",
+            style: PostItem._headlinePostSecondary)
+      ]),
     );
 
     return Row(
@@ -229,10 +295,9 @@ class PostItem extends StatelessWidget {
           ),
         ),
         Container(
-          padding: __padding,
-          decoration: __boxDecoration,
-          child: Icon(Icons.ios_share_outlined, color: Colors.grey.shade500)
-        )        
+            padding: __padding,
+            decoration: __boxDecoration,
+            child: Icon(Icons.ios_share_outlined, color: Colors.grey.shade500))
       ],
     );
   }
@@ -240,6 +305,7 @@ class PostItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+        margin: EdgeInsets.symmetric(vertical: 2.0),
         color: Colors.white,
         padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
         child: Column(
