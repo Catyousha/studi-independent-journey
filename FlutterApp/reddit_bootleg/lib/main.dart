@@ -102,12 +102,14 @@ class PostList extends StatelessWidget {
 
 class PostItem extends StatelessWidget {
   const PostItem({Key? key}) : super(key: key);
+
   static const TextStyle _headlinePostBold =
       TextStyle(fontWeight: FontWeight.bold);
   static const TextStyle _headlinePostSecondary = TextStyle(
     fontWeight: FontWeight.w400,
     color: Colors.grey,
   );
+
   static const TextStyle _contentPostTitle =
       TextStyle(fontWeight: FontWeight.bold, fontSize: 18);
 
@@ -151,7 +153,16 @@ class PostItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
-            child: Text("Lorem Ipsum", style: _contentPostTitle),
+            child: TextButton(
+              onPressed: () => print("judul diklik!"),
+              child: Text("Lorem Ipsum"),
+              style: TextButton.styleFrom(
+                primary: Colors.black,
+                backgroundColor: Colors.white,
+                alignment: Alignment.centerLeft,
+                textStyle: _contentPostTitle,
+              ),
+            ),
           ),
           Image.network(
             "https://source.unsplash.com/random/250x250",
@@ -165,24 +176,63 @@ class PostItem extends StatelessWidget {
   }
 
   Widget _rateSection() {
+    BoxDecoration __boxDecoration = BoxDecoration(
+        border: Border.all(width: 0.1, color: Colors.grey),
+        borderRadius: BorderRadius.circular(100));
+    EdgeInsets __padding = EdgeInsets.symmetric(vertical: 8.0, horizontal: 6.0);
+
+    Widget __voteGiver = Container(
+      padding: __padding,
+      decoration: __boxDecoration,
+      child: Row(
+        children: [
+          Icon(Icons.thumb_up_outlined, color: Colors.grey.shade500),
+          SizedBox(width: 6.0),
+          Text("17", style: _headlinePostSecondary),
+          SizedBox(width: 6.0),
+          Icon(Icons.thumb_down_outlined, color: Colors.grey.shade500),
+        ],
+      ),
+    );
+
+    Widget __addEmblem = Container(
+      padding: __padding,
+      decoration: __boxDecoration,
+      child: Icon(Icons.add_circle_outline, color: Colors.grey.shade500),
+    );
+
+    Widget __comment = Container(
+      padding: __padding,
+      decoration: __boxDecoration,
+      child: Row(
+        children: <Widget>[
+          Icon(Icons.add_comment_outlined, color: Colors.grey.shade500),
+          SizedBox(width: 6.0),
+          Text("17", style: _headlinePostSecondary)
+        ]
+      ),
+    );
+
     return Row(
-      //alignment: WrapAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        Container(
-          padding: EdgeInsets.all(5.0),
-          decoration: BoxDecoration(
-              border: Border.all(width: 0.1, color: Colors.grey),
-              borderRadius: BorderRadius.circular(100)),
+        Expanded(
           child: Row(
-            children: [
-              Icon(Icons.thumb_up_outlined, color: Colors.grey.shade500),
-              SizedBox(width: 6.0),
-              Text("17", style: _headlinePostSecondary),
-              SizedBox(width: 6.0),
-              Icon(Icons.thumb_down_outlined, color: Colors.grey.shade500),
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              __voteGiver,
+              SizedBox(width: 10.0),
+              __addEmblem,
+              SizedBox(width: 10.0),
+              __comment
             ],
           ),
-        )
+        ),
+        Container(
+          padding: __padding,
+          decoration: __boxDecoration,
+          child: Icon(Icons.ios_share_outlined, color: Colors.grey.shade500)
+        )        
       ],
     );
   }
