@@ -9,105 +9,191 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+        debugShowCheckedModeBanner: false,
+        title: 'Reddit - Dive into anything',
+        home: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Color(0xff1D2535),
+            automaticallyImplyLeading: false,
+            title: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(left: 8.0),
+                    child: Image.asset(
+                      'assets/reddit-logo.png',
+                      fit: BoxFit.contain,
+                      height: 50,
+                      width: 100,
+                    ),
+                  ),
+                ]),
+            actions: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.0),
+                child: Icon(Icons.edit),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.0),
+                child: Icon(Icons.menu),
+              )
+            ],
+          ),
+          body: HomePage(),
+        ));
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        color: Color(0xffEFEFED),
+        child: ListView(
+          children: <Widget>[SubnavBar(), PostList()],
+        ));
+  }
+}
+
+class SubnavBar extends StatelessWidget {
+  const SubnavBar({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Color greySecondary = Color(0xffCCCCCA);
+    return Container(
+        margin: EdgeInsets.symmetric(vertical: 4.0),
+        padding: EdgeInsets.all(10.0),
+        color: Colors.white,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Icon(Icons.trending_up, color: greySecondary),
+                  Text(
+                    "Best",
+                    style: TextStyle(color: greySecondary),
+                  ),
+                  Icon(Icons.expand_more, color: greySecondary)
+                ]),
+            Row(children: <Widget>[
+              Icon(Icons.view_compact, color: greySecondary),
+              Icon(Icons.expand_more, color: greySecondary)
+            ])
+          ],
+        ));
+  }
+}
+
+class PostList extends StatelessWidget {
+  const PostList({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[PostItem()],
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+class PostItem extends StatelessWidget {
+  const PostItem({Key? key}) : super(key: key);
+  static const TextStyle _headlinePostBold =
+      TextStyle(fontWeight: FontWeight.bold);
+  static const TextStyle _headlinePostSecondary = TextStyle(
+    fontWeight: FontWeight.w400,
+    color: Colors.grey,
+  );
+  static const TextStyle _contentPostTitle =
+      TextStyle(fontWeight: FontWeight.bold, fontSize: 18);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
+  Widget _headPost() {
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Expanded(
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  CircleAvatar(
+                    backgroundImage: NetworkImage(
+                        "https://source.unsplash.com/random/50x50"),
+                    backgroundColor: Colors.blue,
+                    radius: 15.0,
+                  ),
+                  SizedBox(width: 10.0),
+                  TextButton(
+                    onPressed: () => print("judul diklik!"),
+                    child: Text("r/LoremIpsum"),
+                    style: TextButton.styleFrom(
+                        primary: Colors.black,
+                        backgroundColor: Colors.white,
+                        textStyle: _headlinePostBold),
+                  ),
+                  Text(" · ", style: _headlinePostSecondary),
+                  Text("6h", style: _headlinePostSecondary)
+                ]),
+          ),
+          Icon(Icons.more_horiz, color: Colors.grey)
+        ]);
+  }
 
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
+  Widget _content() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            child: Text("Lorem Ipsum", style: _contentPostTitle),
+          ),
+          Image.network(
+            "https://source.unsplash.com/random/250x250",
+            fit: BoxFit.fill,
+            height: 60,
+            width: 75,
+          )
+        ],
+      ),
+    );
+  }
 
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  Widget _rateSection() {
+    return Row(
+      //alignment: WrapAlignment.spaceBetween,
+      children: <Widget>[
+        Container(
+          padding: EdgeInsets.all(5.0),
+          decoration: BoxDecoration(
+              border: Border.all(width: 0.1, color: Colors.grey),
+              borderRadius: BorderRadius.circular(100)),
+          child: Row(
+            children: [
+              Icon(Icons.thumb_up_outlined, color: Colors.grey.shade500),
+              SizedBox(width: 6.0),
+              Text("17", style: _headlinePostSecondary),
+              SizedBox(width: 6.0),
+              Icon(Icons.thumb_down_outlined, color: Colors.grey.shade500),
+            ],
+          ),
+        )
+      ],
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+    return Container(
+        color: Colors.white,
+        padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+          children: [_headPost(), _content(), _rateSection()],
+        ));
   }
 }
