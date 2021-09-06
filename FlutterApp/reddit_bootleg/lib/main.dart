@@ -1,3 +1,6 @@
+import 'dart:io';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -38,6 +41,20 @@ List<PostSchema> postData = [
       subreddit: "r/LoremIpsum",
       voteCount: 72,
       commentCount: 81),
+  PostSchema(
+      id: 2,
+      title: "consectetur adipiscing elit",
+      time: "4h",
+      subreddit: "r/LoremIpsum",
+      voteCount: 42,
+      commentCount: 12),
+  PostSchema(
+      id: 3,
+      title: "Morbi sit amet sem",
+      time: "4h",
+      subreddit: "r/LoremIpsum",
+      voteCount: 30,
+      commentCount: 29),
 ];
 
 class MyApp extends StatelessWidget {
@@ -76,6 +93,11 @@ class MyApp extends StatelessWidget {
             ],
           ),
           body: HomePage(),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () => print("Tombol diklik!"),
+            backgroundColor: Colors.deepOrange,
+            child: Icon(Icons.refresh),
+          ),
         ));
   }
 }
@@ -131,8 +153,9 @@ class PostList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-        children: List.generate(
-            postData.length, (index) => PostItem(data: postData[index])));
+        children: List.generate(postData.length, (index) {
+      return PostItem(data: postData[index]);
+    }));
   }
 }
 
@@ -157,7 +180,7 @@ class PostItem extends StatefulWidget {
 class _PostItemState extends State<PostItem> {
   int isUpvoted = 0;
   int isDownvoted = 0;
-
+  int randomSeed = new Random().nextInt(100);
   Widget _headPost() {
     return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -169,7 +192,7 @@ class _PostItemState extends State<PostItem> {
                 children: <Widget>[
                   CircleAvatar(
                     backgroundImage: NetworkImage(
-                        "https://source.unsplash.com/random/50x50"),
+                        "https://picsum.photos/seed/$randomSeed/50"),
                     backgroundColor: Colors.blue,
                     radius: 15.0,
                   ),
@@ -211,7 +234,7 @@ class _PostItemState extends State<PostItem> {
             ),
           ),
           Image.network(
-            "https://source.unsplash.com/random/250x250",
+            "https://picsum.photos/seed/${randomSeed + 1}/250",
             fit: BoxFit.fill,
             height: 60,
             width: 75,
@@ -225,7 +248,7 @@ class _PostItemState extends State<PostItem> {
     BoxDecoration __boxDecoration = BoxDecoration(
         border: Border.all(width: 0.1, color: Colors.grey),
         borderRadius: BorderRadius.circular(100));
-    EdgeInsets __padding = EdgeInsets.symmetric(vertical: 8.0, horizontal: 6.0);
+    EdgeInsets __padding = EdgeInsets.symmetric(vertical: 1.0, horizontal: 2.0);
 
     Widget __voteGiver = Container(
       padding: __padding,
@@ -233,6 +256,7 @@ class _PostItemState extends State<PostItem> {
       child: Row(
         children: [
           IconButton(
+              padding: EdgeInsets.all(0),
               onPressed: () {
                 setState(() {
                   if (isUpvoted == 1) return;
@@ -248,6 +272,7 @@ class _PostItemState extends State<PostItem> {
               style: PostItem._headlinePostSecondary),
           SizedBox(width: 6.0),
           IconButton(
+              padding: EdgeInsets.all(0),
               onPressed: () {
                 setState(() {
                   if (isDownvoted == 1) return;
@@ -257,7 +282,8 @@ class _PostItemState extends State<PostItem> {
                 });
               },
               icon: Icon(Icons.thumb_down_outlined),
-              color: isDownvoted == 1 ? Colors.deepOrange : Colors.grey.shade500),
+              color:
+                  isDownvoted == 1 ? Colors.deepOrange : Colors.grey.shade500),
         ],
       ),
     );
@@ -265,17 +291,26 @@ class _PostItemState extends State<PostItem> {
     Widget __addEmblem = Container(
       padding: __padding,
       decoration: __boxDecoration,
-      child: Icon(Icons.add_circle_outline, color: Colors.grey.shade500),
+      child: IconButton(
+          padding: EdgeInsets.all(0),
+          onPressed: () => print("Tombol diklik!"),
+          icon: Icon(Icons.add_circle_outline),
+          color: Colors.grey.shade500),
     );
 
     Widget __comment = Container(
       padding: __padding,
       decoration: __boxDecoration,
       child: Row(children: <Widget>[
-        Icon(Icons.add_comment_outlined, color: Colors.grey.shade500),
+        IconButton(
+            padding: EdgeInsets.all(0),
+            onPressed: () => print("Tombol diklik!"),
+            icon: Icon(Icons.add_comment_outlined),
+            color: Colors.grey.shade500),
         SizedBox(width: 6.0),
         Text("${widget.data.commentCount}",
-            style: PostItem._headlinePostSecondary)
+            style: PostItem._headlinePostSecondary),
+        SizedBox(width: 6.0),
       ]),
     );
 
@@ -295,9 +330,14 @@ class _PostItemState extends State<PostItem> {
           ),
         ),
         Container(
-            padding: __padding,
-            decoration: __boxDecoration,
-            child: Icon(Icons.ios_share_outlined, color: Colors.grey.shade500))
+          padding: __padding,
+          decoration: __boxDecoration,
+          child: IconButton(
+              padding: EdgeInsets.all(0),
+              onPressed: () => print("Tombol diklik!"),
+              icon: Icon(Icons.ios_share),
+              color: Colors.grey.shade500),
+        )
       ],
     );
   }
