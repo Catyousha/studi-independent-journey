@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import './tugas01_reddit_bootleg/reddit_bootleg.dart';
+import 'package:jaka_app/tugas02_vision_form/vision_form.dart';
 
 void main() {
-  runApp(RedditBootleg());
+  runApp(VisionForm());
 }
