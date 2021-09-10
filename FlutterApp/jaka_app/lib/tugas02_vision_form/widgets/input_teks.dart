@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
 class InputTeks extends StatelessWidget {
-  const InputTeks({Key? key, required this.label}) : super(key: key);
+  InputTeks({
+    Key? key,
+    required this.label,
+    required this.onSavedHandler,
+  }) : super(key: key);
   final String label;
+  final void Function(String?) onSavedHandler;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,6 +52,9 @@ class InputTeks extends StatelessWidget {
             ),
           ),
         ),
+        onSaved: (value) {
+          onSavedHandler(value);
+        },
       ),
     );
   }
