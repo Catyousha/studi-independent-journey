@@ -2,10 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
 class PostSchema {
   int id;
   String title;
@@ -56,7 +52,7 @@ List<PostSchema> postData = [
       commentCount: 29),
 ];
 
-class MyApp extends StatelessWidget {
+class RedditBootleg extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
