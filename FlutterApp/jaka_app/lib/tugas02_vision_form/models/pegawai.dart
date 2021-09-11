@@ -13,4 +13,6 @@ class Pegawai {
     KeahlianUIUX: false,
     KeahlianDevOps: false,
   };
+  DateTime? tglLahir = DateTime.now();
+  
 }

@@ -40,8 +40,10 @@ TextTheme textThemeData(TextTheme base) {
       fontWeight: FontWeight.w600,
       fontSize: 14.0,
     ),
-    bodyText2: base.bodyText1!.copyWith(
-      color: Colors.blueAccent,
+    bodyText2: base.bodyText2!.copyWith(
+      color: Colors.blue,
+      fontWeight: FontWeight.w600,
+      fontSize: 12.0,
     ),
   );
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jaka_app/tugas02_vision_form/models/pegawai.dart';
 import 'package:jaka_app/tugas02_vision_form/sections/subsections/jenis_kelamin.dart';
 import 'package:jaka_app/tugas02_vision_form/sections/subsections/keahlian.dart';
+import 'package:jaka_app/tugas02_vision_form/sections/subsections/tgl_lahir.dart';
 import 'package:jaka_app/tugas02_vision_form/widgets/input_teks.dart';
 
 class FormSection extends StatefulWidget {
@@ -17,9 +18,7 @@ class _FormSectionState extends State<FormSection> {
   Pegawai _pegawai = Pegawai();
   bool _keahlianValid = true;
 
-  void _validateKeahlianCheckbox() {
-    
-  }
+  void _validateKeahlianCheckbox() {}
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -42,6 +41,12 @@ class _FormSectionState extends State<FormSection> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            Text(
+              "Isilah Formulir Berikut Dengan Jujur dan Lengkap!",
+              style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
             InputTeks(
               label: 'Nama Lengkap',
               onSavedHandler: (val) {
@@ -70,6 +75,14 @@ class _FormSectionState extends State<FormSection> {
                 });
               },
               isValid: _keahlianValid,
+            ),
+            TanggalLahirSubSection(
+              tglLahir: _pegawai.tglLahir!,
+              onSelectedHandler: (val) {
+                setState(() {
+                  _pegawai.tglLahir = val;
+                });
+              },
             ),
             ElevatedButton(
                 onPressed: () {
