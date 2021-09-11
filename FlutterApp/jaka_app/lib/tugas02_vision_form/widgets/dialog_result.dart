@@ -14,7 +14,7 @@ class DialogResult extends StatelessWidget {
   Widget build(BuildContext context) {
     String _keahlian = "";
     pegawai.keahlian.forEach((key, value) {
-      if (!value) {
+      if (value) {
         _keahlian += "$key, ";
       }
     });
