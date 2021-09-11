@@ -3,6 +3,8 @@ import 'package:jaka_app/tugas02_vision_form/models/pegawai.dart';
 import 'package:jaka_app/tugas02_vision_form/sections/subsections/jenis_kelamin.dart';
 import 'package:jaka_app/tugas02_vision_form/sections/subsections/keahlian.dart';
 import 'package:jaka_app/tugas02_vision_form/sections/subsections/tgl_lahir.dart';
+import 'package:jaka_app/tugas02_vision_form/widgets/button_submit.dart';
+import 'package:jaka_app/tugas02_vision_form/widgets/dialog_result.dart';
 import 'package:jaka_app/tugas02_vision_form/widgets/input_teks.dart';
 
 class FormSection extends StatefulWidget {
@@ -18,7 +20,19 @@ class _FormSectionState extends State<FormSection> {
   Pegawai _pegawai = Pegawai();
   bool _keahlianValid = true;
 
-  void _validateKeahlianCheckbox() {}
+  bool _validateKeahlianCheckbox() {
+    if (!_pegawai.keahlian.containsValue(true)) {
+      setState(() {
+        _keahlianValid = false;
+      });
+    } else {
+      setState(() {
+        _keahlianValid = true;
+      });
+    }
+    return _keahlianValid;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -84,25 +98,24 @@ class _FormSectionState extends State<FormSection> {
                 });
               },
             ),
-            ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
+            Center(
+              child: ButtonSubmit(
+                onPressedHandler: () {
+                  if (_formKey.currentState!.validate() &&
+                      _validateKeahlianCheckbox()) {
                     _formKey.currentState!.save();
-                    if (!_pegawai.keahlian.containsValue(true)) {
-                      setState(() {
-                        _keahlianValid = false;
-                      });
-                      return;
-                    } else {
-                      setState(() {
-                        _keahlianValid = true;
-                      });
-                    }
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('${_pegawai.keahlian}')));
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return DialogResult(
+                          pegawai: _pegawai,
+                        );
+                      },
+                    );
                   }
                 },
-                child: Text('Submit'))
+              ),
+            ),
           ],
         ),
       ),
