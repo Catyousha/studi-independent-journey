@@ -19,20 +19,16 @@ class InputTeks extends StatelessWidget {
             return "Kolom ini wajib diisi!";
           }
         },
-        style: TextStyle(
-          color: Colors.black87,
-          fontWeight: FontWeight.w600,
-          height: 1.5,
-        ),
+        style: Theme.of(context).textTheme.bodyText1!.copyWith(
+              height: 1.5,
+            ),
         decoration: InputDecoration(
           label: Text(
             "${this.label}",
           ),
-          labelStyle: TextStyle(
-            color: Colors.black38,
-            fontWeight: FontWeight.w600,
-            fontSize: 14.0,
-          ),
+          labelStyle: Theme.of(context).textTheme.bodyText1!.copyWith(
+                color: Colors.black38,
+              ),
           floatingLabelStyle: TextStyle(
             color: Colors.blue,
             fontWeight: FontWeight.w600,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jaka_app/tugas02_vision_form/models/pegawai.dart';
 import 'package:jaka_app/tugas02_vision_form/sections/subsections/jenis_kelamin.dart';
+import 'package:jaka_app/tugas02_vision_form/sections/subsections/keahlian.dart';
 import 'package:jaka_app/tugas02_vision_form/widgets/input_teks.dart';
-import 'package:jaka_app/tugas02_vision_form/widgets/input_radio.dart';
 
 class FormSection extends StatefulWidget {
   const FormSection({Key? key}) : super(key: key);
@@ -15,7 +15,11 @@ class _FormSectionState extends State<FormSection> {
   final _formKey = GlobalKey<FormState>();
 
   Pegawai _pegawai = Pegawai();
+  bool _keahlianValid = true;
 
+  void _validateKeahlianCheckbox() {
+    
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -58,12 +62,31 @@ class _FormSectionState extends State<FormSection> {
                 });
               },
             ),
+            KeahlianSubSection(
+              keahlianMap: _pegawai.keahlian,
+              onKeahlianChangedHandler: (key, val) {
+                setState(() {
+                  _pegawai.keahlian[key] = val!;
+                });
+              },
+              isValid: _keahlianValid,
+            ),
             ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
+                    if (!_pegawai.keahlian.containsValue(true)) {
+                      setState(() {
+                        _keahlianValid = false;
+                      });
+                      return;
+                    } else {
+                      setState(() {
+                        _keahlianValid = true;
+                      });
+                    }
                     ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('${_pegawai.jenisKelamin}')));
+                        SnackBar(content: Text('${_pegawai.keahlian}')));
                   }
                 },
                 child: Text('Submit'))

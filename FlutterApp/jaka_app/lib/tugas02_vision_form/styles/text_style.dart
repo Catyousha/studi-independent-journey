@@ -35,5 +35,13 @@ TextTheme textThemeData(TextTheme base) {
     subtitle1: base.subtitle1!.copyWith(
       color: Colors.black54,
     ),
+    bodyText1: base.bodyText1!.copyWith(
+      color: Colors.black87,
+      fontWeight: FontWeight.w600,
+      fontSize: 14.0,
+    ),
+    bodyText2: base.bodyText1!.copyWith(
+      color: Colors.blueAccent,
+    ),
   );
 }

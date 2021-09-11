@@ -12,24 +12,36 @@ class JenisKelaminSubSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        InputRadio(
-          label: "Laki-Laki",
-          setGroupValue: jenisKelaminPegawai,
-          onChangedHandler: (String? val) {
-            jenisKelaminSetter(val);
-          },
-        ),
-        InputRadio(
-          label: "Perempuan",
-          setGroupValue: jenisKelaminPegawai,
-          onChangedHandler: (String? val) {
-            jenisKelaminSetter(val);
-          },
-        ),
-      ],
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            "Jenis Kelamin",
+            style: Theme.of(context).textTheme.bodyText2,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InputRadio(
+                label: "Laki-Laki",
+                setGroupValue: jenisKelaminPegawai,
+                onChangedHandler: (String? val) {
+                  jenisKelaminSetter(val);
+                },
+              ),
+              InputRadio(
+                label: "Perempuan",
+                setGroupValue: jenisKelaminPegawai,
+                onChangedHandler: (String? val) {
+                  jenisKelaminSetter(val);
+                },
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

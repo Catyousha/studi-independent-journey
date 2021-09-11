@@ -14,15 +14,16 @@ class InputRadio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: ListTile(
-        title: Text("$label"),
-        leading: Radio(
-          value: "$label",
-          groupValue: setGroupValue,
-          onChanged: (String? val) {
-            onChangedHandler(val);
-          },
+      child: RadioListTile(
+        title: Text(
+          "$label",
+          style: Theme.of(context).textTheme.bodyText1,
         ),
+        value: "$label",
+        groupValue: setGroupValue,
+        onChanged: (String? val) {
+          onChangedHandler(val);
+        },
       ),
     );
   }
