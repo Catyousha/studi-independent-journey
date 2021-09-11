@@ -8,7 +8,7 @@ Dikutip dari Wikipedia, Reddit adalah situs web hiburan dan juga berita tempat p
 
 ## Screenshot
 
-![App Screenshot](./screenshots/sspage1.png)
+![App Screenshot](../../screenshots/tugas01/sspage1.png)
 
 
 ## Widget Terimplementasi

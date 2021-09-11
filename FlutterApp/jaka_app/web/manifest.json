@@ -1,6 +1,6 @@
 {
-    "name": "reddit_bootleg",
-    "short_name": "reddit_bootleg",
+    "name": "jaka_app",
+    "short_name": "jaka_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

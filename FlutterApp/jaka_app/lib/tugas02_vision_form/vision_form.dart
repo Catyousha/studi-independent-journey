@@ -30,7 +30,9 @@ class HomePage extends StatelessWidget {
         title: Row(
           children: <Widget>[
             CircleAvatar(
-              backgroundColor: Colors.blueAccent,
+              backgroundImage: NetworkImage(
+                  "https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Icon_Paimon_Menu.png"),
+              backgroundColor: Colors.white,
               radius: 15.0,
             ),
             SizedBox(width: 10.0),
@@ -64,4 +66,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
