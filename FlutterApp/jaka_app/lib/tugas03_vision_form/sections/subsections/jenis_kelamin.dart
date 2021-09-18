@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jaka_app/tugas02_vision_form/widgets/input_radio.dart';
+import '../../widgets/input_radio.dart';
 
 class JenisKelaminSubSection extends StatelessWidget {
   const JenisKelaminSubSection(

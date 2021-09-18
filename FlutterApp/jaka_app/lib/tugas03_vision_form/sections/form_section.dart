@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:jaka_app/tugas02_vision_form/models/pegawai.dart';
-import 'package:jaka_app/tugas02_vision_form/sections/subsections/jenis_kelamin.dart';
-import 'package:jaka_app/tugas02_vision_form/sections/subsections/keahlian.dart';
-import 'package:jaka_app/tugas02_vision_form/sections/subsections/tgl_lahir.dart';
-import 'package:jaka_app/tugas02_vision_form/widgets/button_submit.dart';
-import 'package:jaka_app/tugas02_vision_form/widgets/dialog_result.dart';
-import 'package:jaka_app/tugas02_vision_form/widgets/input_teks.dart';
+import '../models/pegawai.dart';
+import '../sections/subsections/jenis_kelamin.dart';
+import '../sections/subsections/keahlian.dart';
+import '../sections/subsections/tgl_lahir.dart';
+import '../widgets/button_submit.dart';
+import '../widgets/dialog_result.dart';
+import '../widgets/input_teks.dart';
 
 class FormSection extends StatefulWidget {
   const FormSection({Key? key}) : super(key: key);

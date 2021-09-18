@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jaka_app/tugas02_vision_form/styles/text_style.dart';
-import 'package:jaka_app/tugas02_vision_form/sections/head_section.dart';
-import 'package:jaka_app/tugas02_vision_form/sections/form_section.dart';
+import './styles/text_style.dart';
+import './sections/head_section.dart';
+import './sections/form_section.dart';
 
 class VisionForm extends StatelessWidget {
   final ThemeData base = ThemeData.light();

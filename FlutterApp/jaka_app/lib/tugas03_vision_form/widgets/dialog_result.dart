@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jaka_app/tugas02_vision_form/models/pegawai.dart';
-import 'package:jaka_app/tugas02_vision_form/widgets/text_result.dart';
+import '../models/pegawai.dart';
+import './text_result.dart';
 
 class DialogResult extends StatelessWidget {
   const DialogResult({

@@ -3,7 +3,7 @@ import 'dart:io';
 class Akun {
   String? nama;
   String? pin;
-  int saldo;
+  int saldo = 0;
 
   Akun(this.nama, this.pin, this.saldo);
 

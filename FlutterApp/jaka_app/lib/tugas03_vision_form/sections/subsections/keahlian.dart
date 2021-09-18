@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jaka_app/tugas02_vision_form/widgets/input_checkbox.dart';
+import '../../widgets/input_checkbox.dart';
 
 class KeahlianSubSection extends StatelessWidget {
   const KeahlianSubSection({
