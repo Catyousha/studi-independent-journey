@@ -32,8 +32,8 @@ class CoinManageMenu implements Menu {
     }
     print("Masukkan nilai pecahan koin yang ingin dihapus:");
     int removeCoinInput = int.tryParse(stdin.readLineSync()!) ?? 0;
-    if (removeCoinInput <= 0) {
-      print("Input koin hanya berupa angka dan bernilai tidak kurang dari 0!");
+    if (removeCoinInput <= 1) {
+      print("Input koin hanya berupa angka dan bernilai tidak kurang dari 1!");
     } else {
       if (coinList.coinExist(Coin(value: removeCoinInput))) {
         coinList.remove(Coin(value: removeCoinInput));

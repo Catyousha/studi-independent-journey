@@ -9,8 +9,9 @@ class MainMenu implements Menu {
   CoinExchangeMenu coinExchangeMenu = CoinExchangeMenu();
 
   MenuStatus show(CoinList coinList) {
-    print("******************************************");
-    print('Selamat datang di layanan pertukaran koin Northland Bank');
+    print("************************************************************");
+    print('* Selamat datang di layanan pertukaran koin Northland Bank *');
+    print("************************************************************");
     print(
         'Di layanan ini, anda dapat menukarkan koin dengan berbagai pecahan yang telah disediakan secara otomatis.');
     print('1. Tukarkan Koin');
