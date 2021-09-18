@@ -1,22 +1,25 @@
+import 'dart:math';
+
 import './coin_model.dart';
 
 class CoinList {
-  List<Coin> coinList = [
-    Coin(value: 1000),
-    Coin(value: 2000),
-    Coin(value: 5000),
-    Coin(value: 10000),
+  List<Coin> _coinList = [
+    Coin(value: 1),
+    Coin(value: 2),
+    Coin(value: 5),
+    Coin(value: 10),
   ];
 
   List<Coin> get get_coins {
-    return [...coinList];
+    _coinList.sort((a, b) {
+      return a.value.compareTo(b.value);
+    });
+    return [..._coinList];
   }
 
-  void add_coin(Coin coin) {
-    coinList.add(coin);
-  }
-
-  void remove_coin(Coin coin) {
-    coinList.remove(coin);
+  int get lowest_coin {
+    return _coinList
+        .reduce((val, ele) => (val.value < ele.value) ? val : ele)
+        .value;
   }
 }

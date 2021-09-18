@@ -5,11 +5,12 @@ import 'coin_manage_menu.dart';
 
 class MainMenu implements Menu {
   static MenuStatus show() {
+    print("******************************************");
     print('Selamat datang di layanan pertukaran koin Northland Bank');
     print(
         'Di layanan ini, anda dapat menukarkan koin dengan berbagai pecahan yang telah disediakan secara otomatis.');
-    print('1. Tukarkan Uang');
-    print('2. Kelola Pecahan Uang');
+    print('1. Tukarkan Koin');
+    print('2. Kelola Pecahan Koin');
     print('3. Keluar');
     String? choice = stdin.readLineSync();
     switch (choice) {
