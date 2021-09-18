@@ -4,8 +4,9 @@ import 'models/coin_list_model.dart';
 
 void main(List<String> args) {
   MenuStatus mainMenuState;
+  MainMenu mainMenu = MainMenu();
   CoinList coinList = CoinList();
   do {
-    mainMenuState = MainMenu().show(coinList);
+    mainMenuState = mainMenu.show(coinList);
   } while (mainMenuState == MenuStatus.running);
 }
