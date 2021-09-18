@@ -21,13 +21,19 @@ class CoinList {
         .value;
   }
 
+  bool coinExist(Coin coin) {
+    int searchCoin =
+        _coinList.indexWhere((element) => (element.value == coin.value));
+    return (searchCoin != -1);
+  }
+
   CoinList add(Coin coin) {
     this._coinList.add(coin);
     return this;
   }
+
   CoinList remove(Coin coin) {
-    this._coinList.remove(coin);
+    this._coinList.removeWhere((element) => element.value == coin.value);
     return this;
   }
-  
 }

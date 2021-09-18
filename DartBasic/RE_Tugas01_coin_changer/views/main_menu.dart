@@ -7,7 +7,7 @@ import 'coin_manage_menu.dart';
 class MainMenu implements Menu {
   CoinManageMenu coinManageMenu = CoinManageMenu();
   CoinExchangeMenu coinExchangeMenu = CoinExchangeMenu();
-  
+
   MenuStatus show(CoinList coinList) {
     print("******************************************");
     print('Selamat datang di layanan pertukaran koin Northland Bank');
@@ -17,13 +17,20 @@ class MainMenu implements Menu {
     print('2. Kelola Pecahan Koin');
     print('3. Keluar');
     String? choice = stdin.readLineSync();
-    
+
     switch (choice) {
       case '1':
         return coinExchangeMenu.show(coinList);
       case '2':
-        return coinManageMenu.show(coinList);
+        MenuStatus coinManageMenuState;
+        do {
+          coinManageMenuState = coinManageMenu.show(coinList);
+        } while (coinManageMenuState == MenuStatus.stayInSubmenu);
+        return coinManageMenuState;
       case '3':
+        print("*************************");
+        print("* Sampai berjumpa lagi! *");
+        print("*************************");
         return MenuStatus.stopped;
       default:
         print('Input tidak valid!');

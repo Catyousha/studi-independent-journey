@@ -1,6 +1,7 @@
 enum MenuStatus {
   running,
   stopped,
+  stayInSubmenu,
 }
 
 abstract class Menu {

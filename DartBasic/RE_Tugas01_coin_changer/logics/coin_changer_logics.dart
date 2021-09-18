@@ -2,40 +2,40 @@ import '../models/coin_model.dart';
 
 class CoinChangerLogics {
 
-  Map<int, List<Coin>?> memoized_coins = {};
+  Map<int, List<Coin>?> memoizedCoins = {};
 
-  List<Coin>? coin_changer(List<Coin> coinList, int temp_coin, int? added_coin) {
-    if (this.memoized_coins[temp_coin] != null) {
-      return this.memoized_coins[temp_coin];
+  List<Coin>? coin_changer(List<Coin> coinList, int tempCoin, int? addedCoin) {
+    if (this.memoizedCoins[tempCoin] != null) {
+      return this.memoizedCoins[tempCoin];
     }
 
-    if (temp_coin < 0) {
+    if (tempCoin < 0) {
       return null;
     }
 
     //referensi algoritma: TOKI
     for (Coin coin in coinList.reversed) {
-      if (temp_coin >= coin.value) {
+      if (tempCoin >= coin.value) {
         List<Coin>? coinTaken =
-            coin_changer(coinList, temp_coin - coin.value, coin.value);
-        List<Coin>? best = this.memoized_coins[temp_coin];
+            coin_changer(coinList, tempCoin - coin.value, coin.value);
+        List<Coin>? best = this.memoizedCoins[tempCoin];
 
         if (coinTaken != null && best != null) {
-          this.memoized_coins[temp_coin] =
+          this.memoizedCoins[tempCoin] =
               ((coinTaken.length) < (best.length)) ? coinTaken : best;
         } else {
-          this.memoized_coins[temp_coin] = (best) ?? (coinTaken);
+          this.memoizedCoins[tempCoin] = (best) ?? (coinTaken);
         }
       }
     }
 
-    if (added_coin != null) {
-      this.memoized_coins[temp_coin] = [
-        ...this.memoized_coins[temp_coin] ?? [],
-        Coin(value: added_coin)
+    if (addedCoin != null) {
+      this.memoizedCoins[tempCoin] = [
+        ...this.memoizedCoins[tempCoin] ?? [],
+        Coin(value: addedCoin)
       ];
     }
 
-    return this.memoized_coins[temp_coin];
+    return this.memoizedCoins[tempCoin];
   }
 }
