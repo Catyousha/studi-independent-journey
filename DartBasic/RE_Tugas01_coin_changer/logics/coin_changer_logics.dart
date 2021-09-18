@@ -1,12 +1,10 @@
-import '../models/coin_list_model.dart';
 import '../models/coin_model.dart';
 
 class CoinChangerLogics {
-  List<Coin> coinList = CoinList().get_coins;
+
   Map<int, List<Coin>?> memoized_coins = {};
 
-  List<Coin>? coin_changer(int temp_coin, int? added_coin) {
-
+  List<Coin>? coin_changer(List<Coin> coinList, int temp_coin, int? added_coin) {
     if (this.memoized_coins[temp_coin] != null) {
       return this.memoized_coins[temp_coin];
     }
@@ -19,7 +17,7 @@ class CoinChangerLogics {
     for (Coin coin in coinList.reversed) {
       if (temp_coin >= coin.value) {
         List<Coin>? coinTaken =
-            coin_changer(temp_coin - coin.value, coin.value);
+            coin_changer(coinList, temp_coin - coin.value, coin.value);
         List<Coin>? best = this.memoized_coins[temp_coin];
 
         if (coinTaken != null && best != null) {

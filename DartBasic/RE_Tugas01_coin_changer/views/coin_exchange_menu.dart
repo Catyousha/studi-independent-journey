@@ -5,8 +5,7 @@ import '../models/coin_model.dart';
 import './menu.dart';
 
 class CoinExchangeMenu implements Menu {
-  static MenuStatus show() {
-    CoinList coinList = CoinList();
+  MenuStatus show(CoinList coinList) {
     print('Anda dapat menukar koin dengan pecahan sebagai berikut: ');
     for (Coin coin in coinList.get_coins) {
       print("* ${coin.value} Mora");
@@ -17,13 +16,14 @@ class CoinExchangeMenu implements Menu {
     if ((coinInput ?? 0) < coinList.lowest_coin) {
       print('Koin tidak valid atau tidak dapat ditukarkan!');
     } else {
-      List<Coin> exchangedCoinList =
-          CoinChangerLogics().coin_changer(coinInput!, null) ?? [];
+      List<Coin> exchangedCoinList = CoinChangerLogics()
+              .coin_changer(coinList.get_coins, coinInput!, null) ??
+          [];
       if (exchangedCoinList.length == 0) {
         print("Koin tidak dapat ditukarkan!");
       } else {
         print(
-              "Koin telah ditukarkan sebanyak ${exchangedCoinList.length} keping");
+            "Koin telah ditukarkan sebanyak ${exchangedCoinList.length} keping");
         for (Coin coin in exchangedCoinList) {
           print("-> ${coin.value} Mora");
         }

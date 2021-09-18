@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import './coin_model.dart';
 
 class CoinList {
@@ -22,4 +20,14 @@ class CoinList {
         .reduce((val, ele) => (val.value < ele.value) ? val : ele)
         .value;
   }
+
+  CoinList add(Coin coin) {
+    this._coinList.add(coin);
+    return this;
+  }
+  CoinList remove(Coin coin) {
+    this._coinList.remove(coin);
+    return this;
+  }
+  
 }

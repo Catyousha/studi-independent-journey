@@ -1,10 +1,14 @@
 import 'dart:io';
+import '../models/coin_list_model.dart';
 import './menu.dart';
 import 'coin_exchange_menu.dart';
 import 'coin_manage_menu.dart';
 
 class MainMenu implements Menu {
-  static MenuStatus show() {
+  CoinManageMenu coinManageMenu = CoinManageMenu();
+  CoinExchangeMenu coinExchangeMenu = CoinExchangeMenu();
+  
+  MenuStatus show(CoinList coinList) {
     print("******************************************");
     print('Selamat datang di layanan pertukaran koin Northland Bank');
     print(
@@ -13,11 +17,12 @@ class MainMenu implements Menu {
     print('2. Kelola Pecahan Koin');
     print('3. Keluar');
     String? choice = stdin.readLineSync();
+    
     switch (choice) {
       case '1':
-        return CoinExchangeMenu.show();
+        return coinExchangeMenu.show(coinList);
       case '2':
-        return CoinManageMenu.show();
+        return coinManageMenu.show(coinList);
       case '3':
         return MenuStatus.stopped;
       default:
