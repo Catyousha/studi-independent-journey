@@ -4,13 +4,14 @@ import '../styles/colors.dart';
 class MondBottomNavigationBar extends StatelessWidget {
   const MondBottomNavigationBar({
     Key? key,
-    required this.context,
   }) : super(key: key);
-  final BuildContext context;
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: Colors.white,
+      elevation: 10.0,
       unselectedItemColor: mondPriNavyBlack,
       selectedItemColor: mondPriBlueOcean,
       showUnselectedLabels: true,

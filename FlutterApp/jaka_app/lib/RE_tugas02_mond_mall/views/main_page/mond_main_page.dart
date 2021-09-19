@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import '../widgets/bottom_nav_bar.dart';
-import '../widgets/icon_with_notif.dart';
-import '../styles/mond_text_styles.dart';
+import './mond_main_body.dart';
+import '../../widgets/bottom_nav_bar.dart';
+import '../../widgets/icon_with_notif.dart';
+import '../../styles/mond_text_styles.dart';
 
 class MondMainPage extends StatelessWidget {
   const MondMainPage({Key? key}) : super(key: key);
@@ -12,12 +13,14 @@ class MondMainPage extends StatelessWidget {
       context: context,
     );
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        elevation: 0.7,
         backgroundColor: Colors.white,
         title: Center(
           child: Text(
             'Mond Mall',
-            style: _mondTextStyles.blueAppBarText,
+            style: _mondTextStyles.blueHeadline4Text,
           ),
         ),
         actions: <Widget>[
@@ -32,9 +35,8 @@ class MondMainPage extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: MondBottomNavigationBar(
-        context: context,
-      ),
+      body: MondMainBody(),
+      bottomNavigationBar: MondBottomNavigationBar(),
     );
   }
 }
