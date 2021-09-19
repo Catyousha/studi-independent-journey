@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import './tugas03_vision_form/vision_form.dart';
+import './RE_tugas02_mond_mall/mond_mall_main.dart';
 
 void main() {
-  runApp(VisionForm());
+  runApp(MondMallApp());
 }
