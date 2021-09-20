@@ -7,7 +7,7 @@ class MondTextStyles {
 
   TextStyle get blueHeadline4Text {
     return Theme.of(context).textTheme.headline4!.copyWith(
-          color: Theme.of(context).colorScheme.primary,
+          color: mondPriBlueOcean,
         );
   }
 
@@ -26,6 +26,13 @@ class MondTextStyles {
   TextStyle get whiteHeadline6Text {
     return Theme.of(context).textTheme.headline3!.copyWith(
           color: mondPriPureWhite,
+        );
+  }
+
+  TextStyle get blueBoldBody2Text {
+    return Theme.of(context).textTheme.bodyText2!.copyWith(
+          color: mondPriBlueOcean,
+          fontWeight: FontWeight.bold,
         );
   }
 
