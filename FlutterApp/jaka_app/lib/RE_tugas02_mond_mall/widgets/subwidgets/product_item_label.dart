@@ -38,7 +38,7 @@ class ProductItemLabel extends StatelessWidget {
             "Rp. ${numberToRupiah(price)}",
             style: _mondTextStyles.strikeGreyBody2Text,
           ),
-        SizedBox(height: 5.0),
+        if (priceAfterSale != null) SizedBox(height: 5.0),
       ],
     );
   }

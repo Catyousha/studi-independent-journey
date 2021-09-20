@@ -23,7 +23,7 @@ class ProductList {
       totalReviews: 86,
     ),
     Product(
-      name: "Prototype Earphone",
+      name: "Earphone Vortex",
       image: Image.asset('assets/RE_T2_Mond_Mall/earphone.png'),
       price: 500000,
       type: <ProductType>[

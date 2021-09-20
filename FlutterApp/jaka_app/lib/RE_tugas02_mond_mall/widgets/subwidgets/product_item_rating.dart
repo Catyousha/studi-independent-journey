@@ -35,6 +35,7 @@ class ProductItemRating extends StatelessWidget {
             ),
           ],
         ),
+        SizedBox(width: 30),
         Icon(
           Icons.more_vert,
           color: mondSecHalfGrey,

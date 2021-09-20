@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../utils/screen_width.dart';
 import '../models/product_model.dart';
 import './subwidgets/product_item_image.dart';
 import './subwidgets/product_item_label.dart';
@@ -17,14 +16,11 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int responsiveDivisor =
-        (MediaQuery.of(context).size.width >= mediumWidth) ? 3 : 2;
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: 15,
         vertical: 10,
       ),
-      width: MediaQuery.of(context).size.width / responsiveDivisor,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),

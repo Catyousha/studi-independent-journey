@@ -67,14 +67,14 @@ class PromotionBanner extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: _mondTextStyles.whiteHeadline6Text,
+                    style: _mondTextStyles.whiteHeadline3Text,
                   ),
                   SizedBox(
                     height: 10.0,
                   ),
                   Text(
                     subtitle,
-                    style: _mondTextStyles.whiteBody2Text,
+                    style: _mondTextStyles.whiteHeadline6Text,
                   ),
                 ],
               ),
