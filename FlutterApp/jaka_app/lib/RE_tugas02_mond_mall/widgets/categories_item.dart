@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CategoriesItem extends StatelessWidget {
-  const CategoriesItem({
+class CategoryItem extends StatelessWidget {
+  const CategoryItem({
     Key? key,
     required this.iconColor,
     required this.boxColor,
