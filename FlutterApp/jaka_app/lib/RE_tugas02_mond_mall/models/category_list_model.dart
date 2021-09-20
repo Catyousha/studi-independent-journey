@@ -2,47 +2,60 @@ import 'package:flutter/material.dart';
 import '../styles/colors.dart';
 import './category_model.dart';
 
+enum CategoryType {
+  foods,
+  gift,
+  fashion,
+  gadget,
+  computer,
+  souvenir,
+}
+
 class CategoryList {
-  List<Category> _categoryList = [
-    Category(
+  Map<CategoryType, Category> _categoryTypes = {
+    CategoryType.foods: Category(
       iconColor: mondSecEarthGreen,
       boxColor: mondLabOffGreen,
       icon: Icons.fastfood_outlined,
       name: "Foods",
     ),
-    Category(
+    CategoryType.gift: Category(
       iconColor: mondSecRedVelvet,
       boxColor: mondLabOffRed,
       icon: Icons.card_giftcard_outlined,
       name: "Gift",
     ),
-    Category(
+    CategoryType.fashion: Category(
       iconColor: mondPriOrangeFresh,
       boxColor: mondSecLightYellow,
       icon: Icons.checkroom_outlined,
       name: "Fashion",
     ),
-    Category(
+    CategoryType.gadget: Category(
       iconColor: mondPriBlueOcean,
       boxColor: mondLabOffBlue,
       icon: Icons.devices_other_outlined,
       name: "Gadget",
     ),
-    Category(
+    CategoryType.computer: Category(
       iconColor: mondSecEarthGreen,
       boxColor: mondLabOffGreen,
       icon: Icons.computer_outlined,
       name: "Computer",
     ),
-    Category(
+    CategoryType.souvenir: Category(
       iconColor: mondSecRedVelvet,
       boxColor: mondLabOffRed,
       icon: Icons.auto_awesome_outlined,
       name: "Souvenir",
     ),
-  ];
+  };
 
   List<Category> get getList {
-    return [..._categoryList];
+    List<Category> _categoryList = [];
+    _categoryTypes.forEach((key, value) {
+      _categoryList.add(value);
+    });
+    return _categoryList;
   }
 }
