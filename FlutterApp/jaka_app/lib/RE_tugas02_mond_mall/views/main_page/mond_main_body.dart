@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import './sections/greetings_text.dart';
 import './sections/product_search_bar.dart';
-import '../../widgets/promotion_banner.dart';
+import './sections/promotion_carousel.dart';
 
 class MondMainBody extends StatelessWidget {
   const MondMainBody({Key? key}) : super(key: key);
@@ -19,14 +19,7 @@ class MondMainBody extends StatelessWidget {
             SizedBox(height: gapY),
             ProductSearchBar(),
             SizedBox(height: gapY),
-            PromotionBanner(
-              title: "Gratis Ongkir Selama PPKM!",
-              subtitle: "Periode Mei - Agustus 2021",
-              image: Image.asset(
-                "assets/RE_T2_Mond_Mall/promotion1.png",
-                fit: BoxFit.fill,
-              ),
-            ),
+            PromotionCarousel(),
           ],
         ),
       ),

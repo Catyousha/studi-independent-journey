@@ -17,17 +17,27 @@ class PromotionBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MondTextStyles _mondTextStyles = MondTextStyles(context: context);
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
+    double bannerHeight = MediaQuery.of(context).size.height * 0.30;
+    double bannerWidth = MediaQuery.of(context).size.width * 0.94;
     return Container(
-      width: screenWidth,
-      height: screenHeight / 3,
+      width: bannerWidth,
+      height: bannerHeight,
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: mondPriBlueOcean.withOpacity(0.5),
+            blurRadius: 8.0,
+            spreadRadius: 0.0,
+            offset: Offset(2.0, 2.0), // shadow direction: bottom right
+          )
+        ],
+      ),
       child: Stack(
-        alignment: Alignment.center,
+        alignment: Alignment.topCenter,
         children: <Widget>[
           Positioned(
-            height: screenHeight / 3,
-            width: screenWidth * 0.6,
+            height: bannerHeight,
+            width: bannerWidth * 0.6,
             right: 0,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10.0),
@@ -37,10 +47,9 @@ class PromotionBanner extends StatelessWidget {
           Positioned(
             left: 0,
             child: Container(
-              width: screenWidth * 0.55,
-              height: screenHeight / 3,
+              width: bannerWidth * 0.65,
+              height: bannerHeight,
               padding: EdgeInsets.symmetric(
-                vertical: 30.0,
                 horizontal: 15.0,
               ),
               decoration: BoxDecoration(
