@@ -22,10 +22,15 @@ class IconWithNotification extends StatelessWidget {
       child: Center(
         child: Stack(
           children: [
-            Icon(
-              notifIcon,
-              size: iconSize,
-              color: mondPriNavyBlack,
+            IconButton(
+              padding: EdgeInsets.all(0),
+              icon: Icon(
+                notifIcon,
+                size: iconSize,
+                color: mondPriNavyBlack,
+              ),
+              onPressed: () {},
+              splashRadius: 24.0,
             ),
             Positioned(
               right: 0.0,

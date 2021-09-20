@@ -47,6 +47,8 @@ class MondBottomNavigationBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: CircleAvatar(
             backgroundColor: Colors.amber,
+            backgroundImage:
+                NetworkImage("https://source.unsplash.com/random/250x250"),
             radius: 12,
           ),
           label: "ACCOUNT",
