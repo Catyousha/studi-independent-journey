@@ -29,6 +29,13 @@ class MondTextStyles {
         );
   }
 
+  TextStyle get redBoldBody1Text {
+    return Theme.of(context).textTheme.bodyText1!.copyWith(
+          color: mondSecRedVelvet,
+          fontWeight: FontWeight.bold,
+        );
+  }
+
   TextStyle get blueBoldBody2Text {
     return Theme.of(context).textTheme.bodyText2!.copyWith(
           color: mondPriBlueOcean,
@@ -39,6 +46,14 @@ class MondTextStyles {
   TextStyle get whiteBody2Text {
     return Theme.of(context).textTheme.bodyText2!.copyWith(
           color: mondPriPureWhite,
+        );
+  }
+
+  TextStyle get strikeGreyBody2Text {
+    return Theme.of(context).textTheme.bodyText2!.copyWith(
+          color: mondSecHalfGrey,
+          fontWeight: FontWeight.w500,
+          decoration: TextDecoration.lineThrough,
         );
   }
 }

@@ -18,6 +18,7 @@ class ProductList {
       category: <CategoryType>[
         CategoryType.gadget,
       ],
+      priceAfterSale: 300000,
       avgRate: 5.0,
       totalReviews: 86,
     ),
@@ -35,6 +36,7 @@ class ProductList {
       category: <CategoryType>[
         CategoryType.gadget,
       ],
+      priceAfterSale: 300000,
       avgRate: 4.6,
       totalReviews: 120,
     ),
@@ -52,6 +54,7 @@ class ProductList {
       category: <CategoryType>[
         CategoryType.gadget,
       ],
+      priceAfterSale: 300000,
       avgRate: 4.0,
       totalReviews: 310,
     ),
@@ -64,10 +67,7 @@ class ProductList {
   List<Product> getByProductType(ProductType type) {
     return [
       ..._productList.where((product) {
-        return product ==
-            product.type.where((product_type) {
-              return product_type == type;
-            });
+        return product.type.contains(type);
       })
     ];
   }

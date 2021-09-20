@@ -15,16 +15,16 @@ class Product {
   int price;
   List<ProductType> type;
   List<CategoryType> category;
-  int? afterSalePrice;
+  int? priceAfterSale;
   double avgRate;
   int totalReviews;
   Product({
     required this.name,
     required this.image,
     required this.price,
+    this.priceAfterSale,
     required this.type,
     required this.category,
-    this.afterSalePrice,
     required this.avgRate,
     required this.totalReviews,
   });

@@ -1,0 +1,1 @@
+const mediumWidth = 768;
