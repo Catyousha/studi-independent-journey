@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../widgets/page_container.dart';
 import '../../models/patient_screen_arguments.dart';
 import '../../widgets/description_tile.dart';
 import '../../widgets/status_badge.dart';
@@ -31,15 +32,9 @@ class PatientDetailPage extends StatelessWidget {
           Navigator.pop(context);
         },
       ),
-      body: Container(
-        padding: EdgeInsets.symmetric(
-          horizontal: 24.0,
-          vertical: 20.0,
-        ),
-        decoration: BoxDecoration(
-          color: colorSkyLightest,
-        ),
-        child: ListView(
+      body: PageContainer(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
               "Detail Pasien",

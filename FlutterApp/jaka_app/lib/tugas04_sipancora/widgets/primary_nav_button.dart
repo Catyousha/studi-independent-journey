@@ -23,7 +23,7 @@ class PrimaryNavButton extends StatelessWidget {
         primary: backgroundColor,
         padding: EdgeInsets.symmetric(
           vertical: 16.0,
-          horizontal: 1.0,
+          horizontal: 60.0,
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(48.0),

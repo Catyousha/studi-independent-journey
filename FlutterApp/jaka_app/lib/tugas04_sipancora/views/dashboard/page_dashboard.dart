@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import '../../widgets/page_container.dart';
 import '../../widgets/patient_list_tile.dart';
 import '../../widgets/primary_nav_button.dart';
 import '../../models/patient_list_model.dart';
-import '../../styles/colors.dart';
 import '../../styles/typos.dart';
 import '../../widgets/patient_stats.dart';
 import '../../widgets/sipancora_text.dart';
@@ -34,15 +34,9 @@ class DashboardPage extends StatelessWidget {
         leadingIcon: Icons.logout,
         onPressLeadingIcon: () {},
       ),
-      body: Container(
-        padding: EdgeInsets.symmetric(
-          horizontal: 22.0,
-          vertical: 20,
-        ),
-        decoration: BoxDecoration(
-          color: colorSkyLightest,
-        ),
-        child: ListView(
+      body: PageContainer(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
               "Dashboard",
@@ -53,9 +47,11 @@ class DashboardPage extends StatelessWidget {
               patientList: patientList,
             ),
             SizedBox(height: 18.0),
-            PrimaryNavButton(
-              label: "+ Tambah Pasien",
-              onTapHandler: () => {},
+            Center(
+              child: PrimaryNavButton(
+                label: "+ Tambah Pasien",
+                onTapHandler: () => {},
+              ),
             ),
             SizedBox(height: 21.0),
             Column(
