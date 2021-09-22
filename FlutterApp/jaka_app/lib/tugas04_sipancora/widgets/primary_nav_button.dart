@@ -14,7 +14,7 @@ class PrimaryNavButton extends StatelessWidget {
   final String label;
   final Color backgroundColor;
   final Color textColor;
-  final Function onTapHandler;
+  final VoidCallback onTapHandler;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class PrimaryNavButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(48.0),
         ),
       ),
-      onPressed: () => onTapHandler,
+      onPressed: onTapHandler,
       child: Text(
         label,
         style: typosTextRegular(

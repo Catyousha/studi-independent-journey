@@ -8,7 +8,6 @@ class SipancoraAppBar extends StatelessWidget implements PreferredSizeWidget {
   final IconData leadingIcon;
   final VoidCallback onPressLeadingIcon;
 
-  /// you can add more fields that meet your needs
   const SipancoraAppBar({
     Key? key,
     this.title,

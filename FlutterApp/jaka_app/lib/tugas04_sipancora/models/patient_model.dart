@@ -63,4 +63,18 @@ class Patient {
   String? get showPatientGender {
     return _patientGender[this.gender] ?? "UNDEFINED";
   }
+
+  String get showPatientStartDate {
+    DateTime startDate = this.dateTreatedStart;
+    return "${startDate.day}/${startDate.month}/${startDate.year}";
+  }
+
+  String get showPatientEndDate {
+    DateTime? endDate = this.dateTreatedEnd;
+    if (endDate == null) {
+      return "--/--";
+    } else {
+      return "${endDate.day}/${endDate.month}/${endDate.year}";
+    }
+  }
 }

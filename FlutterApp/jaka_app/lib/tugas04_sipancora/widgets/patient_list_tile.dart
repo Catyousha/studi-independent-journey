@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jaka_app/tugas04_sipancora/models/patient_screen_arguments.dart';
 
 import '../models/patient_model.dart';
 import '../styles/colors.dart';
@@ -10,7 +11,10 @@ import 'primary_nav_button.dart';
 class PatientLabelAction extends StatelessWidget {
   const PatientLabelAction({
     Key? key,
+    required this.patientData,
   }) : super(key: key);
+
+  final Patient patientData;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +23,16 @@ class PatientLabelAction extends StatelessWidget {
         Expanded(
           child: PrimaryNavButton(
             label: "Detail",
-            onTapHandler: () {},
+            onTapHandler: () {
+              Navigator.pushNamed(
+                context,
+                '/detail',
+                arguments: PatientScreenArguments(
+                  type: PatientArgsType.detail,
+                  patient: patientData,
+                ),
+              );
+            },
           ),
         ),
         SizedBox(width: 7.0),
@@ -35,14 +48,12 @@ class PatientLabelAction extends StatelessWidget {
 }
 
 class PatientLabelData extends StatelessWidget {
-  final Patient patientData;
-
-  final DateTime dateTreated;
   const PatientLabelData({
     Key? key,
     required this.patientData,
-    required this.dateTreated,
   }) : super(key: key);
+
+  final Patient patientData;
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +78,7 @@ class PatientLabelData extends StatelessWidget {
               ),
               SizedBox(height: 4),
               Text(
-                "Dirawat Sejak ${dateTreated.day}/${dateTreated.month}/${dateTreated.year}",
+                "Dirawat Sejak ${patientData.showPatientStartDate}",
                 style: typosTextRegular(
                   type: TyposType.small,
                   color: colorInkLighter,
@@ -88,16 +99,15 @@ class PatientLabelData extends StatelessWidget {
 }
 
 class PatientListTile extends StatelessWidget {
-  final Patient patientData;
-
   const PatientListTile({
     Key? key,
     required this.patientData,
   }) : super(key: key);
 
+  final Patient patientData;
+
   @override
   Widget build(BuildContext context) {
-    DateTime dateTreated = patientData.dateTreatedStart;
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: 24.0,
@@ -111,10 +121,11 @@ class PatientListTile extends StatelessWidget {
         children: [
           PatientLabelData(
             patientData: patientData,
-            dateTreated: dateTreated,
           ),
           SizedBox(height: 22.0),
-          PatientLabelAction(),
+          PatientLabelAction(
+            patientData: patientData,
+          ),
         ],
       ),
     );
