@@ -23,4 +23,5 @@ const Color colorRedLightest = Color(0xFFFFE5E5);
 const Color colorSkyBase = Color(0xFFCDCFD0);
 const Color colorSkyLight = Color(0xFFE3E5E5);
 const Color colorSkyLighter = Color(0xFFF2F4F5);
+const Color colorSkyLightest = Color(0xFFF7F9FA);
 const Color colorSkyWhite = Color(0xFFFFFFFF);

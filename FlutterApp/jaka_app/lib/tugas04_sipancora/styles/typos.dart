@@ -24,7 +24,7 @@ TextStyle typosTextTitle({
 
   return TextStyle(
     fontFamily: 'Inter',
-    fontSize: fontSize ?? titleFontSize[title + 1],
+    fontSize: fontSize ?? titleFontSize[title - 1],
     fontWeight: FontWeight.w700,
     color: color,
   );

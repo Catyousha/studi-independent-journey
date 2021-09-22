@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import '../styles/colors.dart';
+
 enum PatientStatus {
   treated,
   recovered,
@@ -38,13 +41,23 @@ class Patient {
     PatientStatus.died: "Meninggal"
   };
 
+  Map<PatientStatus, List<Color>> _patientStatusColor = {
+    PatientStatus.treated: [colorBlueBase, colorBlueLightest],
+    PatientStatus.recovered: [colorGreenBase, colorGreenLightest],
+    PatientStatus.died: [colorRedBase, colorRedLightest],
+  };
+
   Map<PatientGender, String> _patientGender = {
     PatientGender.male: "Pria",
     PatientGender.female: "Wanita",
   };
 
-  String? get showPatientStatus {
+  String get showPatientStatus {
     return _patientStatus[this.status] ?? "UNDEFINED";
+  }
+
+  List<Color> get showPatientStatusColor {
+    return _patientStatusColor[this.status] ?? [];
   }
 
   String? get showPatientGender {

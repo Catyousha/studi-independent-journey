@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import './RE_tugas02_mond_mall/mond_mall_main.dart';
+import 'tugas04_sipancora/main_sipancora.dart';
+
 
 void main() {
-  runApp(MondMallApp());
+  runApp(SipancoraApp());
 }
