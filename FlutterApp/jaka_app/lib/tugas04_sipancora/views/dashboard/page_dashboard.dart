@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jaka_app/tugas04_sipancora/models/patient_screen_arguments.dart';
 import '../../widgets/page_container.dart';
 import '../../widgets/patient_list_tile.dart';
 import '../../widgets/primary_nav_button.dart';
@@ -50,7 +51,15 @@ class DashboardPage extends StatelessWidget {
             Center(
               child: PrimaryNavButton(
                 label: "+ Tambah Pasien",
-                onTapHandler: () => {},
+                onTapHandler: () => {
+                  Navigator.pushNamed(
+                    context,
+                    '/add',
+                    arguments: PatientScreenArguments(
+                      type: PatientArgsType.add,
+                    ),
+                  ),
+                },
               ),
             ),
             SizedBox(height: 21.0),

@@ -13,26 +13,26 @@ enum PatientGender {
 }
 
 class Patient {
-  int id;
-  String name;
-  String avatarSrc;
-  int age;
-  PatientGender gender;
-  DateTime dateTreatedStart;
+  int? id;
+  String? name;
+  String? avatarSrc;
+  int? age;
+  PatientGender? gender;
+  DateTime? dateTreatedStart;
   DateTime? dateTreatedEnd;
-  PatientStatus status;
-  int room;
+  PatientStatus? status;
+  int? room;
 
   Patient({
-    required this.id,
-    required this.name,
-    required this.avatarSrc,
-    required this.age,
-    required this.gender,
-    required this.dateTreatedStart,
+    this.id,
+    this.name,
+    this.avatarSrc,
+    this.age,
+    this.gender = PatientGender.male,
+    this.dateTreatedStart,
     this.dateTreatedEnd,
-    required this.status,
-    required this.room,
+    this.status = PatientStatus.treated,
+    this.room,
   });
 
   Map<PatientStatus, String> _patientStatus = {
@@ -65,8 +65,8 @@ class Patient {
   }
 
   String get showPatientStartDate {
-    DateTime startDate = this.dateTreatedStart;
-    return "${startDate.day}/${startDate.month}/${startDate.year}";
+    DateTime? startDate = this.dateTreatedStart;
+    return "${startDate?.day}/${startDate?.month}/${startDate?.year}";
   }
 
   String get showPatientEndDate {

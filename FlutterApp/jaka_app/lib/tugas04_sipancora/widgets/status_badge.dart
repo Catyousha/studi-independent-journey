@@ -25,13 +25,11 @@ class StatusBadge extends StatelessWidget {
         vertical: 8.0,
         horizontal: 16.0,
       ),
-      child: Center(
-        child: Text(
-          label,
-          style: typosTextBold(
-            type: TyposType.small,
-            color: textColor,
-          ),
+      child: Text(
+        label,
+        style: typosTextBold(
+          type: TyposType.small,
+          color: textColor,
         ),
       ),
     );

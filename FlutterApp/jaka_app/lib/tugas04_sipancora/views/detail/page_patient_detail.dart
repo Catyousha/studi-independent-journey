@@ -23,7 +23,7 @@ class PatientDetailPage extends StatelessWidget {
       Navigator.pop(context);
     }
 
-    final Patient patientData = args.patient;
+    final Patient patientData = args.patient!;
 
     return Scaffold(
       appBar: SipancoraAppBar(
@@ -46,7 +46,7 @@ class PatientDetailPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   CircleAvatar(
-                    backgroundImage: NetworkImage(patientData.avatarSrc),
+                    backgroundImage: NetworkImage(patientData.avatarSrc!),
                     radius: 22.0,
                   ),
                   SizedBox(height: 22.0),

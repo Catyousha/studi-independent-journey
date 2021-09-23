@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jaka_app/tugas04_sipancora/models/patient_list_model.dart';
-import 'package:jaka_app/tugas04_sipancora/models/patient_model.dart';
-import 'package:jaka_app/tugas04_sipancora/views/detail/page_patient_detail.dart';
+import 'models/patient_list_model.dart';
+import 'views/detail/page_patient_detail.dart';
+import 'views/patient_form/page_patient_form.dart';
 import 'views/dashboard/page_dashboard.dart';
 
 class SipancoraApp extends StatelessWidget {
@@ -17,6 +17,7 @@ class SipancoraApp extends StatelessWidget {
               patientList: _patientList,
             ),
         '/detail': (context) => PatientDetailPage(),
+        '/add': (context) => PatientFormPage(),
       },
     );
   }

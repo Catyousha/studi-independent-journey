@@ -8,10 +8,10 @@ enum PatientArgsType {
 
 class PatientScreenArguments {
   final PatientArgsType type;
-  final Patient patient;
+  final Patient? patient;
 
   PatientScreenArguments({
     required this.type,
-    required this.patient,
+    this.patient,
   });
 }

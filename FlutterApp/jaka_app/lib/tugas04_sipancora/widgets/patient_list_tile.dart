@@ -63,7 +63,7 @@ class PatientLabelData extends StatelessWidget {
       children: <Widget>[
         CircleAvatar(
           radius: 20.0,
-          backgroundImage: NetworkImage(patientData.avatarSrc),
+          backgroundImage: NetworkImage(patientData.avatarSrc!),
         ),
         SizedBox(width: 12.0),
         Expanded(
@@ -71,7 +71,7 @@ class PatientLabelData extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                patientData.name,
+                patientData.name!,
                 style: typosTextRegular(
                   type: TyposType.regular,
                 ),
