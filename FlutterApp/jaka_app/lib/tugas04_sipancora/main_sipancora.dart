@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jaka_app/tugas04_sipancora/views/splash_screen/page_splash_screen.dart';
 import 'models/patient_list_model.dart';
 import 'views/detail/page_patient_detail.dart';
 import 'views/patient_form/page_patient_form.dart';
@@ -23,6 +24,7 @@ class _SipancoraAppState extends State<SipancoraApp> {
         '/': (context) => DashboardPage(
               patientList: _patientList,
             ),
+        '/splash': (context) => SplashScreenPage(),
         '/detail': (context) => PatientDetailPage(),
         '/add': (context) => PatientFormPage(
               modelModifier: (newPatient) {
@@ -34,7 +36,8 @@ class _SipancoraAppState extends State<SipancoraApp> {
         '/edit': (context) => PatientFormPage(
               modelModifierTwoParams: (id, newPatient) {
                 setState(() {
-                  this._patientList = this._patientList.editPatient(id, newPatient);
+                  this._patientList =
+                      this._patientList.editPatient(id, newPatient);
                 });
               },
             ),

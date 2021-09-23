@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jaka_app/tugas04_sipancora/models/patient_screen_arguments.dart';
+import '../models/patient_screen_arguments.dart';
 
 import '../models/patient_model.dart';
 import '../styles/colors.dart';

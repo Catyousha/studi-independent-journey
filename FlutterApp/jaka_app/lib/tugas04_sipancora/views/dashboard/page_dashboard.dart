@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import '../../models/patient_screen_arguments.dart';
 import '../../widgets/page_container.dart';
@@ -20,6 +23,14 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
+  @override
+  void initState() {
+    SchedulerBinding.instance!.addPostFrameCallback((_) {
+      Navigator.of(context).pushNamed("/splash");
+    });
+    super.initState();
+  }
+
   List<Widget> _buildPatientList() {
     List<Widget> __patientListTiles = [];
     widget.patientList.getPatientList.forEach((element) {
@@ -40,7 +51,7 @@ class _DashboardPageState extends State<DashboardPage> {
         title: SipancoraText(),
         leadingIcon: Icons.logout,
         onPressLeadingIcon: () {
-          SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+          SystemChannels.platform.invokeMethod<void>('SystemNavigator.pop');
         },
       ),
       body: PageContainer(
