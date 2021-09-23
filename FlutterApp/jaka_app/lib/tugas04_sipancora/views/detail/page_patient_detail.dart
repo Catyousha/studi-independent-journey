@@ -42,20 +42,22 @@ class PatientDetailPage extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 22.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  CircleAvatar(
-                    backgroundImage: NetworkImage(patientData.avatarSrc!),
-                    radius: 22.0,
-                  ),
-                  SizedBox(height: 22.0),
-                  StatusBadge(
-                    label: patientData.showPatientStatus,
-                    backgroundColor: patientData.showPatientStatusColor[1],
-                    textColor: patientData.showPatientStatusColor[0],
-                  ),
-                ],
+              child: Center(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    CircleAvatar(
+                      backgroundImage: NetworkImage(patientData.avatarSrc!),
+                      radius: 22.0,
+                    ),
+                    SizedBox(height: 22.0),
+                    StatusBadge(
+                      label: patientData.showPatientStatus,
+                      backgroundColor: patientData.showPatientStatusColor[1],
+                      textColor: patientData.showPatientStatusColor[0],
+                    ),
+                  ],
+                ),
               ),
             ),
             DescriptionTile(

@@ -9,9 +9,11 @@ enum PatientArgsType {
 class PatientScreenArguments {
   final PatientArgsType type;
   final Patient? patient;
+  final Function(dynamic)? modelModifier;
 
   PatientScreenArguments({
     required this.type,
     this.patient,
+    this.modelModifier,
   });
 }

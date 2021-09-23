@@ -48,12 +48,14 @@ class PatientList {
     return this._patientList.firstWhere((element) => element.id == id);
   }
 
-  void addPatient(Patient newPatient) {
+  PatientList addPatient(Patient newPatient) {
     this._patientList.add(newPatient);
+    return this;
   }
 
-  void editPatient(int oldPatientId, Patient newPatient) {
+  PatientList editPatient(int oldPatientId, Patient newPatient) {
     int idxPatient = this._patientList.indexOf(newPatient);
     this._patientList[idxPatient] = newPatient;
+    return this;
   }
 }

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../styles/colors.dart';
 import '../styles/typos.dart';
 
-class PrimaryNavButton extends StatelessWidget {
-  const PrimaryNavButton({
+class PrimaryButton extends StatelessWidget {
+  const PrimaryButton({
     Key? key,
     required this.label,
     required this.onTapHandler,

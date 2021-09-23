@@ -66,7 +66,11 @@ class Patient {
 
   String get showPatientStartDate {
     DateTime? startDate = this.dateTreatedStart;
-    return "${startDate?.day}/${startDate?.month}/${startDate?.year}";
+    if (startDate == null) {
+      return "--/--";
+    } else {
+      return "${startDate.day}/${startDate.month}/${startDate.year}";
+    }
   }
 
   String get showPatientEndDate {

@@ -5,9 +5,21 @@ import '../../models/patient_screen_arguments.dart';
 import '../../widgets/page_container.dart';
 import '../../widgets/sipancora_appbar.dart';
 
-class PatientFormPage extends StatelessWidget {
-  const PatientFormPage({Key? key}) : super(key: key);
+class PatientFormPage extends StatefulWidget {
+  const PatientFormPage({
+    Key? key,
+    this.modelModifier,
+    this.modelModifierTwoParams,
+  }) : super(key: key);
 
+  final Function(dynamic)? modelModifier;
+  final Function(dynamic, dynamic)? modelModifierTwoParams;
+
+  @override
+  State<PatientFormPage> createState() => _PatientFormPageState();
+}
+
+class _PatientFormPageState extends State<PatientFormPage> {
   @override
   Widget build(BuildContext context) {
     late final PatientScreenArguments args;
@@ -29,10 +41,10 @@ class PatientFormPage extends StatelessWidget {
         child: PatientFormSection(
           pageType: args.type,
           patientData: patientData,
+          modelModifier: widget.modelModifier,
+          modelModifierTwoParams: widget.modelModifierTwoParams,
         ),
       ),
     );
   }
 }
-
-

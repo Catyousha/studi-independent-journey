@@ -6,7 +6,7 @@ import '../styles/colors.dart';
 import '../styles/shadows.dart';
 import '../styles/typos.dart';
 import 'status_badge.dart';
-import 'primary_nav_button.dart';
+import 'primary_button.dart';
 
 class PatientLabelAction extends StatelessWidget {
   const PatientLabelAction({
@@ -21,7 +21,7 @@ class PatientLabelAction extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: PrimaryNavButton(
+          child: PrimaryButton(
             label: "Detail",
             onTapHandler: () {
               Navigator.pushNamed(
@@ -36,11 +36,20 @@ class PatientLabelAction extends StatelessWidget {
           ),
         ),
         SizedBox(width: 7.0),
-        PrimaryNavButton(
+        PrimaryButton(
           label: "Edit",
-          onTapHandler: () {},
           textColor: colorPriBase,
           backgroundColor: colorPriLightest,
+          onTapHandler: () {
+            Navigator.pushNamed(
+              context,
+              '/edit',
+              arguments: PatientScreenArguments(
+                type: PatientArgsType.edit,
+                patient: patientData,
+              ),
+            );
+          },
         )
       ],
     );

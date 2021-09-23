@@ -1,22 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:jaka_app/tugas04_sipancora/models/patient_screen_arguments.dart';
+import 'package:flutter/services.dart';
+import '../../models/patient_screen_arguments.dart';
 import '../../widgets/page_container.dart';
 import '../../widgets/patient_list_tile.dart';
-import '../../widgets/primary_nav_button.dart';
+import '../../widgets/primary_button.dart';
 import '../../models/patient_list_model.dart';
 import '../../styles/typos.dart';
 import '../../widgets/patient_stats.dart';
 import '../../widgets/sipancora_text.dart';
 import '../../widgets/sipancora_appbar.dart';
 
-class DashboardPage extends StatelessWidget {
+class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key, required this.patientList}) : super(key: key);
 
   final PatientList patientList;
 
+  @override
+  State<DashboardPage> createState() => _DashboardPageState();
+}
+
+class _DashboardPageState extends State<DashboardPage> {
   List<Widget> _buildPatientList() {
     List<Widget> __patientListTiles = [];
-    patientList.getPatientList.forEach((element) {
+    widget.patientList.getPatientList.forEach((element) {
       __patientListTiles.addAll([
         PatientListTile(
           patientData: element,
@@ -33,7 +39,9 @@ class DashboardPage extends StatelessWidget {
       appBar: SipancoraAppBar(
         title: SipancoraText(),
         leadingIcon: Icons.logout,
-        onPressLeadingIcon: () {},
+        onPressLeadingIcon: () {
+          SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+        },
       ),
       body: PageContainer(
         child: Column(
@@ -45,11 +53,11 @@ class DashboardPage extends StatelessWidget {
             ),
             SizedBox(height: 16.0),
             PatientStats(
-              patientList: patientList,
+              patientList: widget.patientList,
             ),
             SizedBox(height: 18.0),
             Center(
-              child: PrimaryNavButton(
+              child: PrimaryButton(
                 label: "+ Tambah Pasien",
                 onTapHandler: () => {
                   Navigator.pushNamed(

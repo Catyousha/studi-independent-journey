@@ -4,11 +4,18 @@ import 'views/detail/page_patient_detail.dart';
 import 'views/patient_form/page_patient_form.dart';
 import 'views/dashboard/page_dashboard.dart';
 
-class SipancoraApp extends StatelessWidget {
+class SipancoraApp extends StatefulWidget {
   const SipancoraApp({Key? key}) : super(key: key);
+
+  @override
+  State<SipancoraApp> createState() => _SipancoraAppState();
+}
+
+class _SipancoraAppState extends State<SipancoraApp> {
+  PatientList _patientList = PatientList();
+
   @override
   Widget build(BuildContext context) {
-    PatientList _patientList = PatientList();
     return MaterialApp(
       title: "SIPANCORA | Sistem Pendataan Pasien COVID-19 RS Terra",
       debugShowCheckedModeBanner: false,
@@ -17,7 +24,20 @@ class SipancoraApp extends StatelessWidget {
               patientList: _patientList,
             ),
         '/detail': (context) => PatientDetailPage(),
-        '/add': (context) => PatientFormPage(),
+        '/add': (context) => PatientFormPage(
+              modelModifier: (newPatient) {
+                setState(() {
+                  this._patientList = this._patientList.addPatient(newPatient);
+                });
+              },
+            ),
+        '/edit': (context) => PatientFormPage(
+              modelModifierTwoParams: (id, newPatient) {
+                setState(() {
+                  this._patientList = this._patientList.editPatient(id, newPatient);
+                });
+              },
+            ),
       },
     );
   }
