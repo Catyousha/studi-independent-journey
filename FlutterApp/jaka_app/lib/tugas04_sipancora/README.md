@@ -42,6 +42,6 @@ Menampung berbagai komponen widget yang digunakan.
         <h4>Tampilan Bagian Edit Pasien</h4>
         <img src="../../screenshots/tugas04/edit.png" width="250"><br>
         <img src="../../screenshots/tugas04/edit2.png" width="250"><br>
-        <a>Dari laman dashboard dapat beralih ke laman perubahan pasien, disediakan form dengan data pasien yang dipilih untuk dirubah.</a>
+        <a>Dari laman dashboard dapat beralih ke laman perubahan pasien, disediakan form dengan data pasien yang dipilih untuk dirubah (gambar kedua dilakukan input perubahan pada data status pasien dan tanggal selesai dirawat).</a>
     </div>
 </div>
